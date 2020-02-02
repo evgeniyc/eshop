@@ -11,10 +11,18 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+	'language' => 'ru-RU',
+	'defaultRoute' => 'page',
+	'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+			'layout' => 'main'
+        ],
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'iptfQ5ajtjEZOKQW_HvW7-9ZIaScWwK0',
+            'cookieValidationKey' => '3etom5PDRr4l6yQUlBfpjdTCWs1yqXY8',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -24,7 +32,7 @@ $config = [
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'app/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -32,6 +40,7 @@ $config = [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => true,
+			'htmlLayout' => 'layouts/html',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -43,14 +52,24 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
+            'rules' => [ 
+                'catalog/category/<id:\d+>/page/<page:\d+>' => 'catalog/category',
+                'catalog/category/<id:\d+>' => 'catalog/category',
+                'catalog/brand/<id:\d+>/page/<page:\d+>' => 'catalog/brand',
+                'catalog/brand/<id:\d+>' => 'catalog/brand',
+                'catalog/product/<id:\d+>' => 'catalog/product',
+                // правило для 2, 3, 4 страницы результатов поиска
+                'catalog/search/query/<query:.*?>/page/<page:\d+>' => 'catalog/search',
+                // правило для первой страницы результатов поиска
+                'catalog/search/query/<query:.*?>' => 'catalog/search',
+                // правило для первой страницы с пустым запросом
+                'catalog/search' => 'catalog/search',
+
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
