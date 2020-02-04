@@ -2,9 +2,10 @@
 namespace app\modules\admin\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
- * This is the model class for table "category".
+ * Это модель для таблицы БД `category`
  *
  * @property int $id Уникальный идентификатор
  * @property int $parent_id Родительская категория
@@ -14,21 +15,34 @@ use Yii;
  * @property string $description Мета-тег description
  * @property string $image Имя файла изображения
  */
-class Category extends \yii\db\ActiveRecord
-{
+class Category extends ActiveRecord {
+
     /**
-     * {@inheritdoc}
+     * Возвращает имя таблицы базы данных
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'category';
     }
 
     /**
-     * {@inheritdoc}
+     * Возвращает данные о родительской категории
      */
-    public function rules()
-    {
+    public function getParent() {
+        return $this->hasOne(Category::class, ['id' => 'parent_id']);
+    }
+
+    /**
+     * Возвращает наименование родительской категории
+     */
+    public function getParentName() {
+        $parent = $this->parent;
+        return $parent ? $parent->name : '';
+    }
+
+    /**
+     * Правила валидации полей формы при создании и редактировании категории
+     */
+    public function rules() {
         return [
             [['parent_id'], 'integer'],
             [['name'], 'required'],
@@ -37,18 +51,17 @@ class Category extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
+     * Возвращает имена полей формы для создания и редактирования категории
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
-            'parent_id' => 'Parent ID',
-            'name' => 'Name',
-            'content' => 'Content',
-            'keywords' => 'Keywords',
-            'description' => 'Description',
-            'image' => 'Image',
+            'parent_id' => 'Родитель',
+            'name' => 'Наименование',
+            'content' => 'Описание',
+            'keywords' => 'Мета-тег keywords',
+            'description' => 'Мета-тег description',
+            'image' => 'Изображение'
         ];
     }
 }
