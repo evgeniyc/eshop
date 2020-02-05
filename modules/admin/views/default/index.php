@@ -40,8 +40,8 @@ GridView::widget([
             },
             'format' => 'html'
         ],
-        'created',
-        'updated'
+        //'created',
+        //'updated',
     ],
 ]);
 ?>

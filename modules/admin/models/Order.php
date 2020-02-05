@@ -3,6 +3,8 @@
 namespace app\modules\admin\models;
 
 use Yii;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "order".
