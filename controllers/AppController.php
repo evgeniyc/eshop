@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use yii\web\Controller;
 use Yii;
+use app\models\Page;
 
 class AppController extends Controller {
 
@@ -12,6 +13,13 @@ class AppController extends Controller {
      * @param string $keywords
      * @param string $description
      */
+	 
+	 public $pageMenu;
+	 
+	 public function beforeAction($action) {
+        $this->pageMenu = Page::getTree();
+        return parent::beforeAction($action);
+    }
 	 
 	 public function actions() {
         return [

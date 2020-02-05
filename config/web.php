@@ -71,6 +71,16 @@ $config = [
             ],
         ],
     ],
+	'controllerMap' => [
+        'elfinder' => [
+            'class' => 'mihaildev\elfinder\PathController',
+            'access' => ['?'], // доступ для всех
+            'root' => [
+                'path' => 'images/pages', // директория внутри web
+                'name' => 'Изображения'
+            ],
+        ]
+    ],
     'params' => $params,
 ];
 

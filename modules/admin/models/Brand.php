@@ -3,9 +3,10 @@ namespace app\modules\admin\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\imagine\Image;
 
 /**
- * Это модель для таблицы БД `category`
+ * Это модель для таблицы БД `brand`
  *
  * @property int $id Уникальный идентификатор
  * @property string $name Наименование бренда
@@ -15,6 +16,11 @@ use yii\db\ActiveRecord;
  * @property string $image Имя файла изображения
  */
 class Brand extends ActiveRecord {
+
+    /**
+     * Вспомогательный атрибут для загрузки изображения
+     */
+    public $upload;
 
     /**
      * Возвращает имя таблицы базы данных
@@ -29,7 +35,9 @@ class Brand extends ActiveRecord {
     public function rules() {
         return [
             [['name'], 'required'],
-            [['name', 'content', 'keywords', 'description', 'image'], 'string', 'max' => 255],
+            [['name', 'content', 'keywords', 'description'], 'string', 'max' => 255],
+            // атрибут image проверяем с помощью валидатора image
+            ['image', 'image', 'extensions' => 'png, jpg, gif'],
         ];
     }
 
@@ -45,5 +53,62 @@ class Brand extends ActiveRecord {
             'description' => 'Мета-тег description',
             'image' => 'Изображение',
         ];
+    }
+
+    /**
+     * Загружает файл изображения бренда
+     */
+    public function uploadImage() {
+        if ($this->upload) { // только если был выбран файл для загрузки
+            $name = md5(uniqid(rand(), true)) . '.' . $this->upload->extension;
+            // сохраняем исходное изображение в директории source
+            $source = Yii::getAlias('@webroot/images/brands/source/' . $name);
+            if ($this->upload->saveAs($source)) {
+                // выполняем resize, чтобы получить маленькое изображение
+                $thumb = Yii::getAlias('@webroot/images/brands/thumb/' . $name);
+                Image::thumbnail($source, 250, 250)->save($thumb, ['quality' => 90]);
+                return $name;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Удаляет старое изображение при загрузке нового
+     */
+    public static function removeImage($name) {
+        if (!empty($name)) {
+            $source = Yii::getAlias('@webroot/images/brands/source/' . $name);
+            if (is_file($source)) {
+                unlink($source);
+            }
+            $thumb = Yii::getAlias('@webroot/images/brands/thumb/' . $name);
+            if (is_file($thumb)) {
+                unlink($thumb);
+            }
+        }
+    }
+
+    /**
+     * Удаляет изображение при удалении бренда
+     */
+    public function afterDelete() {
+        parent::afterDelete();
+        self::removeImage($this->image);
+    }
+	
+	/**
+     * Проверка перед удалением бренда
+     */
+    public function beforeDelete() {
+        $products = Product::find()->where(['brand_id' => $this->id])->all();
+        if (!empty($products)) {
+            Yii::$app->session->setFlash(
+                'warning',
+                'Нельзя удалить бренд, у которого есть товары'
+            );
+            return false;
+        }
+        return parent::beforeDelete();
     }
 }

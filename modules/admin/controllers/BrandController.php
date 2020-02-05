@@ -6,9 +6,10 @@ use app\modules\admin\models\Brand;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
- * Класс BrandController реализует CRUD для брендов
+ * Класс OrderController реализует CRUD для брендов
  */
 class BrandController extends AdminController {
 
@@ -49,7 +50,14 @@ class BrandController extends AdminController {
      */
     public function actionCreate() {
         $model = new Brand();
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            // загружаем изображение и выполняем resize исходного изображения
+            $model->upload = UploadedFile::getInstance($model, 'image');
+            if ($name = $model->uploadImage()) { // если изображение было загружено
+                // сохраняем в БД имя файла изображения
+                $model->image = $name;
+            }
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
         return $this->render('create', [
@@ -62,7 +70,22 @@ class BrandController extends AdminController {
      */
     public function actionUpdate($id) {
         $model = $this->findModel($id);
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        // старое изображение, которое надо удалить, если загружено новое
+        $old = $model->image;
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            // загружаем изображение и выполняем resize исходного изображения
+            $model->upload = UploadedFile::getInstance($model, 'image');
+            if ($new = $model->uploadImage()) { // если изображение было загружено
+                // удаляем старое изображение
+                if (!empty($old)) {
+                    $model::removeImage($old);
+                }
+                // сохраняем в БД новое имя
+                $model->image = $new;
+            } else { // оставляем старое изображение
+                $model->image = $old;
+            }
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
         return $this->render('update', [

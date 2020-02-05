@@ -1,24 +1,26 @@
 <?php
-
 namespace app\modules\admin;
 
-/**
- * admin module definition class
- */
-class Module extends \yii\base\Module
+use Yii;
+use yii\web\ErrorHandler;
+
+class Module extends \yii\base\Module 
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public $controllerNamespace = 'app\modules\admin\controllers';
 
-    /**
-     * {@inheritdoc}
-     */
-    public function init()
-    {
+    public function init() {
         parent::init();
-
-        // custom initialization code goes here
+        Yii::configure($this, [
+            'components' => [
+                'errorHandler' => [
+                    'class' => ErrorHandler::class,
+                    'errorAction' => 'admin/admin/error'
+                ]
+            ],
+        ]);
+        $handler = $this->get('errorHandler');
+        Yii::$app->set('errorHandler', $handler);
+        $handler->register();
     }
 }

@@ -14,4 +14,12 @@ class AdminController extends Controller {
         }
         return parent::beforeAction($action);
     }
+
+    public function actions() {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+        ];
+    }
 }

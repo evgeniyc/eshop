@@ -3,10 +3,8 @@
  * Страница списка всех категорий, файл modules/admin/views/category/index.php
  */
 use yii\helpers\Html;
-use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Категории каталога';
 ?>
@@ -15,31 +13,43 @@ $this->title = 'Категории каталога';
 <p>
     <?= Html::a('Добавить категорию', ['create'], ['class' => 'btn btn-success']); ?>
 </p>
-<?=
-GridView::widget([
-    'dataProvider' => $dataProvider,
-    'columns' => [
-        ['class' => 'yii\grid\SerialColumn'],
-        'name',
-        [
-            'attribute' => 'parent_id',
-            'value' => function($data) {
-                return $data->getParentName();
-            }
-        ],
-        [
-            'attribute' => 'keywords',
-            'value' => function($data) {
-                return empty($data->keywords) ? 'Не задано' : $data->keywords;
-            }
-        ],
-        [
-            'attribute' => 'description',
-            'value' => function($data) {
-                return empty($data->description) ? 'Не задано' : $data->description;
-            }
-        ],
-        ['class' => 'yii\grid\ActionColumn'],
-    ],
-]);
-?>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Наименование</th>
+            <th>Мета-тег keywords</th>
+            <th>Мета-тег description</th>
+            <th><span class="glyphicon glyphicon-list"></span></th>
+            <th><span class="glyphicon glyphicon-eye-open"></span></th>
+            <th><span class="glyphicon glyphicon-pencil"></span></th>
+            <th><span class="glyphicon glyphicon-trash"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($categories as $category): ?>
+        <tr>
+            <td><?= $category['name']; ?></td>
+            <td><?= $category['keywords']; ?></td>
+            <td><?= $category['description']; ?></td>
+            <td>
+                <?php
+                echo Html::a(
+                    '<span class="glyphicon glyphicon-list"></span>',
+                    ['/admin/category/products', 'id' => $category['id']]
+                );
+                ?>
+            </td>
+            <td>
+                ..........
+            </td>
+            <td>
+                ..........
+            </td>
+            <td>
+                ..........
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>

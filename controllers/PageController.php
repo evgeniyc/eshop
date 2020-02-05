@@ -27,13 +27,27 @@ class PageController extends AppController {
             $saleProducts = Product::find()->where(['sale' => 1])->limit(3)->asArray()->all();
             Yii::$app->cache->set('sale-products', $saleProducts);
         }
-
-        // устанавливаем мета-теги для страницы
+		// устанавливаем мета-теги для страницы
         $this->setMetaTags();
 
         return $this->render(
             'index',
             compact('hitProducts', 'newProducts', 'saleProducts')
         );
+    }
+	
+	public function actionView($slug) {
+        if ($page = Page::find()->where(['slug' => $slug])->one()) {
+            $this->setMetaTags(
+                $page->name,
+                $page->keywords,
+                $page->description
+            );
+            return $this->render(
+                'view',
+                ['page' => $page]
+            );
+        }
+        throw new NotFoundHttpException('Запрошенная страница не найдена');
     }
 }

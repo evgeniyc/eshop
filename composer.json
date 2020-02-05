@@ -19,7 +19,10 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "insolita/yii2-migration-generator": "^3.2",
-        "ladamalina/lingua-stem-ru": "dev-master"
+        "ladamalina/lingua-stem-ru": "dev-master",
+        "mihaildev/yii2-ckeditor": "*",
+        "yiisoft/yii2-imagine": "^2.2",
+        "mihaildev/yii2-elfinder": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
