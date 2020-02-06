@@ -2,6 +2,7 @@
 namespace app\controllers;
 
 use app\models\Product;
+use app\models\Page;
 use Yii;
 
 class PageController extends AppController {
