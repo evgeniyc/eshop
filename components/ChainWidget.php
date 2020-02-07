@@ -30,7 +30,8 @@ class ChainWidget extends Widget {
         $html = Yii::$app->cache->get($key);
         if ($html === false) {
             // данных нет в кеше, получаем их заново
-            $chain = (new Category())->getParents($this->itemCurrent);
+            $chain = (new Category())->getParent($this->itemCurrent);
+			$chain = array($chain);
             if (!$this->showCurrent) {
                 array_pop($chain);
             }
