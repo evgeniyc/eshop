@@ -25,15 +25,15 @@ use yii\helpers\Html;
                 <!-- Активный элемент -->
                 <div class="item active">
                     <img src="images/slider/1.jpg" alt="...">
-                    <div class="carousel-caption">Первый элемент слайдера</div>
+                    <div class="carousel-caption">Бытовая техника</div>
                 </div>
                 <div class="item">
                     <img src="images/slider/2.jpg" alt="...">
-                    <div class="carousel-caption">Второй элемент слайдера</div>
+                    <div class="carousel-caption">Электроника</div>
                 </div>
                 <div class="item">
                     <img src="images/slider/3.jpg" alt="...">
-                    <div class="carousel-caption">Третий элемент слайдера</div>
+                    <div class="carousel-caption">Стройматериалы</div>
                 </div>
             </div>
 

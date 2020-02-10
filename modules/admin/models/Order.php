@@ -5,6 +5,7 @@ namespace app\modules\admin\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "order".

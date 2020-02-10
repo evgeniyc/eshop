@@ -3,7 +3,6 @@ namespace app\modules\admin\controllers;
 
 use yii\data\ActiveDataProvider;
 use app\modules\admin\models\Order;
-use yii\behaviors\TimestampBehavior;
 
 class DefaultController extends AdminController {
 

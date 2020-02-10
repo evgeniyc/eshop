@@ -42,7 +42,7 @@ class CatalogController extends AppController {
                 'Запрошенная страница не найдена'
             );
         }
-        if ($data === false) {
+		if ($data === false) {
             // данных нет в кеше, получаем их заново
             $temp = new Category();
             // данные о категории
@@ -52,7 +52,7 @@ class CatalogController extends AppController {
                 list($products, $pages) = $temp->getCategoryProducts($id);
                 // сохраняем полученные данные в кеше
                 $data = [$products, $pages, $category];
-                Yii::$app->cache->set('category-' . $id . '-page-' . $page, $data);
+                Yii::$app->cache->set('category-' . $id . '-page-' . $page, $data, 25);
             } else { // такая категория не существует
                 Yii::$app->cache->set('category-' . $id . '-page-' . $page, null);
                 throw new HttpException(

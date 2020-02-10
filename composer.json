@@ -22,7 +22,8 @@
         "ladamalina/lingua-stem-ru": "dev-master",
         "mihaildev/yii2-ckeditor": "*",
         "yiisoft/yii2-imagine": "^2.2",
-        "mihaildev/yii2-elfinder": "*"
+        "mihaildev/yii2-elfinder": "*",
+        "rmrevin/yii2-fontawesome": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

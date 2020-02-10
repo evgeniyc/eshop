@@ -7,6 +7,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use app\assets\AppAsset;
 use yii\bootstrap\Modal;
+use yii\bootstrap\Nav;
+use rmrevin\yii\fontawesome\FAS;
 
 AppAsset::register($this);
 ?>
@@ -63,7 +65,7 @@ AppAsset::register($this);
                         </a>
                     </div>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-8"><!--
                     <ul class="pull-right">
                         <li><i class="fa fa-user"></i> <a href="#">Аккаунт</a></li>
                         <li><i class="fa fa-star"></i> <a href="#">Избранное</a></li>
@@ -73,7 +75,34 @@ AppAsset::register($this);
                             <a href="<?= Url::to(['basket/index']); ?>">Корзина</a>
                         </li>
                         <li><i class="fa fa-lock"></i> <a href="#">Войти</a></li>
-                    </ul>
+                    </ul>-->
+					
+					<?php
+					echo Nav::widget([
+						'options' => ['class' => 'navbar-nav navbar-right'],
+						'encodeLabels' => false,
+						'items' => [
+							['label' => FAS::i('home').' Главная', 'url' => ['/page/index']],
+							['label' => FAS::i('crosshairs').' О нас', 'url' => ['/page/about']],
+							['label' => FAS::i('id-badge').' Контакты', 'url' => ['/site/contact']],
+							['label' => FAS::i('shopping-cart').' Корзина', 'url' => ['/basket/index']],
+							
+							Yii::$app->user->isGuest ? (
+								['label' => 'Войти', 'url' => ['/site/login']]
+							) : (
+								'<li>'
+								. Html::beginForm(['/site/logout'], 'post')
+								. Html::submitButton(
+									'Выйти (' . Yii::$app->user->identity->username . ')',
+									['class' => 'btn btn-link logout']
+								)
+								. Html::endForm()
+								. '</li>'
+							)
+						],
+					]);
+					?>
+										
                 </div>
             </div>
         </div>
@@ -83,7 +112,7 @@ AppAsset::register($this);
         <div class="container">
             <div class="row">
                 <div class="col-sm-8">
-                    <div id="menu">
+                    <!--<div id="menu">
                         <ul>
                             <li>
                                 <a href="<?= Url::to(['catalog/index']); ?>">
@@ -109,7 +138,7 @@ AppAsset::register($this);
                                 </li>
                             <?php endforeach; ?>
                         </ul>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="col-sm-4">
                     <form method="post" action="<?= Url::to(['catalog/search']); ?>" class="pull-right">
