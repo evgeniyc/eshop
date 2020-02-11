@@ -18,7 +18,7 @@ class BrandsWidget extends Widget {
             $brands = (new Brand())->getPopularBrands(); 
             $html = $this->render('brands', ['brands' => $brands]); 
             // сохраняем полученные данные в кеше 
-            Yii::$app->cache->set('widget-brands', $html); 
+            Yii::$app->cache->set('widget-brands', $html, 15); 
         } 
         return $html; 
     } 

@@ -29,6 +29,26 @@ class Category extends ActiveRecord {
         return $this->hasOne(self::class, ['id' => 'parent_id']);
     }
 
+	/**
+     * Метод создает цепочку категорий от заданной $id
+     */
+    public static function Parents($id) {
+		$current = self::findOne($id);
+		$chain[0]['id'] = $current->id;
+		$chain[0]['name'] = $current->name;
+		if ($current->parent_id === 0)
+			return $chain;
+		$i = 1;
+		do {
+			$current = $current->parent;
+			$chain[$i]['id'] = $current->id;
+			$chain[$i]['name'] = $current->name;
+			$i++;
+		} while($current->parent_id > 0);
+		
+        return array_reverse($chain);
+    }
+	
     /**
      * Метод описывает связь таблицы БД `category` с таблицей `category`
      */

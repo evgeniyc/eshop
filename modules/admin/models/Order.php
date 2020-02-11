@@ -5,6 +5,7 @@ namespace app\modules\admin\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "order".
@@ -80,6 +81,14 @@ class Order extends \yii\db\ActiveRecord
     }
 	
 	/**
+     * Позволяет получить все товары заказа
+     */
+    public function getItems() {
+        // связь таблицы БД `order` с таблицей `order_item`
+        return $this->hasMany(OrderItem::class, ['order_id' => 'id']);
+    }
+	
+	/**
      * Удаляет товары заказа при удалении заказа
      */
     public function afterDelete() {
@@ -87,3 +96,5 @@ class Order extends \yii\db\ActiveRecord
         OrderItem::deleteAll(['order_id' => $this->id]);
     }
 }
+
+

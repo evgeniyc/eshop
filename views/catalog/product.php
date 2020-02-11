@@ -13,7 +13,7 @@ use yii\helpers\Html;
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-3 left-sidebar">
                 <h2>Каталог</h2>
                 <div class="category-products">
                     <?= TreeWidget::widget(); ?>

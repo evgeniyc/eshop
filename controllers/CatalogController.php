@@ -9,7 +9,7 @@ use Yii;
 
 class CatalogController extends AppController {
     
-	const cacheTime = 60;
+	const cacheTime = 5;
 	
 	/**
      * Главная страница каталога товаров
@@ -45,8 +45,8 @@ class CatalogController extends AppController {
                 'Запрошенная страница не найдена'
             );
         }
-		$data = false;
-        if ($data === false) {
+
+		if ($data === false) {
             // данных нет в кеше, получаем их заново
             $temp = new Category();
             // данные о категории
@@ -56,7 +56,7 @@ class CatalogController extends AppController {
                 list($products, $pages) = $temp->getCategoryProducts($id);
                 // сохраняем полученные данные в кеше
                 $data = [$products, $pages, $category];
-                Yii::$app->cache->set('category-' . $id . '-page-' . $page, $data,self::cacheTime);
+                Yii::$app->cache->set('category-' . $id . '-page-' . $page, $data, self::cacheTime);
             } else { // такая категория не существует
                 Yii::$app->cache->set('category-' . $id . '-page-' . $page, null);
                 throw new HttpException(

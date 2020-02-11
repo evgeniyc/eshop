@@ -42,7 +42,7 @@ use yii\widgets\LinkPager;
                                         ['alt' => $product['name'], 'class' => 'img-responsive']
                                     );
                                     ?>
-                                    <h2><?= $product['price']; ?> руб.</h2>
+                                    <h2><?= $product['price']; ?> грн.</h2>
                                     <p>
                                         <a href="<?= Url::to(['catalog/product', 'id' => $product['id']]); ?>">
                                             <?= Html::encode($product['name']); ?>

@@ -3,6 +3,7 @@ namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 use yii\behaviors\TimestampBehavior;
 
 class Order extends ActiveRecord {
@@ -97,10 +98,5 @@ class Order extends ActiveRecord {
             $item->cost = $product['price'] * $product['count'];
             $item->insert();
         }
-    }
-	
-	public function getItems() {
-        // связь таблицы БД `order` с таблицей `order_item`
-        return $this->hasMany(OrderItem::class, ['order_id' => 'id']);
     }
 }

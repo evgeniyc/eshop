@@ -113,3 +113,12 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+.header-middle {
+	background: #e1fab7;
+}
+.left-sidebar {
+	background: #ffbfff;
+}
+.product-image img {
+	width: 100%;
+}
