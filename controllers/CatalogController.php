@@ -8,7 +8,10 @@ use yii\web\HttpException;
 use Yii;
 
 class CatalogController extends AppController {
-    /**
+    
+	const cacheTime = 60;
+	
+	/**
      * Главная страница каталога товаров
      */
     public function actionIndex() {
@@ -16,13 +19,13 @@ class CatalogController extends AppController {
         $roots = Yii::$app->cache->get('root-categories');
         if ($roots === false) {
             $roots = Category::find()->where(['parent_id' => 0])->asArray()->all();
-            Yii::$app->cache->set('root-categories', $roots);
+            Yii::$app->cache->set('root-categories', $roots, self::cacheTime);
         }
         // получаем популярные бренды
         $brands = Yii::$app->cache->get('popular-brands');
         if ($brands === false) {
             $brands = (new Brand())->getPopularBrands();
-            Yii::$app->cache->set('popular-brands', $brands);
+            Yii::$app->cache->set('popular-brands', $brands, self::cacheTime);
         }
         return $this->render('index', compact('roots', 'brands'));
     }
@@ -42,6 +45,7 @@ class CatalogController extends AppController {
                 'Запрошенная страница не найдена'
             );
         }
+		$data = false;
         if ($data === false) {
             // данных нет в кеше, получаем их заново
             $temp = new Category();
@@ -52,7 +56,7 @@ class CatalogController extends AppController {
                 list($products, $pages) = $temp->getCategoryProducts($id);
                 // сохраняем полученные данные в кеше
                 $data = [$products, $pages, $category];
-                Yii::$app->cache->set('category-' . $id . '-page-' . $page, $data);
+                Yii::$app->cache->set('category-' . $id . '-page-' . $page, $data,self::cacheTime);
             } else { // такая категория не существует
                 Yii::$app->cache->set('category-' . $id . '-page-' . $page, null);
                 throw new HttpException(
@@ -84,7 +88,7 @@ class CatalogController extends AppController {
             // данных нет в кеше, получаем их заново
             $brands = (new Brand())->getAllBrands();
             // сохраняем полученные данные в кеше
-            Yii::$app->cache->set('all-brands', $brands);
+            Yii::$app->cache->set('all-brands', $brands, self::cacheTime);
         }
         return $this->render(
             'brands',
@@ -117,7 +121,7 @@ class CatalogController extends AppController {
                 list($products, $pages) = $temp->getBrandProducts($id);
                 // сохраняем полученные данные в кеше
                 $data = [$products, $pages, $brand];
-                Yii::$app->cache->set('brand-'.$id.'-page-'.$page, $data);
+                Yii::$app->cache->set('brand-'.$id.'-page-'.$page, $data, self::cacheTime);
             } else { // такой бренд не существует
                 Yii::$app->cache->set('brand-'.$id.'-page-'.$page, null);
                 throw new HttpException(
@@ -153,6 +157,7 @@ class CatalogController extends AppController {
                 'Запрошенная страница не найдена'
             );
         }
+		$data = false;
         if ($data === false) {
             // данных нет в кеше, получаем их заново
             $product = (new Product())->getProduct($id);
@@ -160,7 +165,7 @@ class CatalogController extends AppController {
                 $brand = (new Brand())->getBrand($product['brand_id']);
                 $data = [$product, $brand];
                 // сохраняем полученные данные в кеше
-                Yii::$app->cache->set('product-' . $id, $data);
+                Yii::$app->cache->set('product-' . $id, $data, 1);
             } else { // такого товара не существует
                 Yii::$app->cache->set('product-' . $id, null);
                 throw new HttpException(
@@ -190,7 +195,7 @@ class CatalogController extends AppController {
                 ->limit(3)
                 ->asArray()
                 ->all();
-            Yii::$app->cache->set('similar-'.$product['id'], $similar);
+            Yii::$app->cache->set('similar-'.$product['id'], $similar, self::cacheTime);
         }
         return $this->render(
             'product',

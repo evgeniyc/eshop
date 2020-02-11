@@ -28,16 +28,14 @@ class ChainWidget extends Widget {
         $show = $this->showCurrent ? 'true' : 'false';
         $key = 'widget-chain-'.$this->itemCurrent.'-show-'.$show;
         $html = Yii::$app->cache->get($key);
-        if ($html === false) {
+		$html = false;
+		if ($html === false) {
             // данных нет в кеше, получаем их заново
             $chain = (new Category())->getParent($this->itemCurrent);
-			$chain = array($chain);
-            if (!$this->showCurrent) {
-                array_pop($chain);
-            }
+			
             $html = $this->render('chain', ['chain' => $chain]);
             // сохраняем полученные данные в кеше
-            Yii::$app->cache->set($key, $html);
+            //Yii::$app->cache->set($key, $html);
         }
         return $html;
     }
