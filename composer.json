@@ -23,7 +23,8 @@
         "mihaildev/yii2-ckeditor": "*",
         "yiisoft/yii2-imagine": "^2.2",
         "mihaildev/yii2-elfinder": "*",
-        "rmrevin/yii2-fontawesome": "*"
+        "rmrevin/yii2-fontawesome": "*",
+        "dmstr/yii2-adminlte-asset": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
