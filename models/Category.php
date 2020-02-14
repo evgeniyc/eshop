@@ -36,7 +36,7 @@ class Category extends ActiveRecord {
 		$current = self::findOne($id);
 		$chain[0]['id'] = $current->id;
 		$chain[0]['name'] = $current->name;
-		if ($current->parent_id === 0)
+		if ($current->parent_id == 0)
 			return $chain;
 		$i = 1;
 		do {

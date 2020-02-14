@@ -13,6 +13,7 @@ class BrandsWidget extends Widget {
     public function run() { 
         // пробуем извлечь данные из кеша 
         $html = Yii::$app->cache->get('widget-brands'); 
+		$html = false;
         if ($html === false) { 
             // данных нет в кеше, получаем их заново 
             $brands = (new Brand())->getPopularBrands(); 

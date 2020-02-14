@@ -12,21 +12,22 @@ class PageController extends AppController {
     public function actionIndex() {
         // получаем лидеров продаж
         $hitProducts = Yii::$app->cache->get('hit-products');
+		$hitProducts = false;
         if ($hitProducts === false) {
             $hitProducts = Product::find()->where(['hit' => 1])->limit(3)->asArray()->all();
-            Yii::$app->cache->set('hit-products', $hitProducts);
+            Yii::$app->cache->set('hit-products', $hitProducts, 25);
         }
         // получаем новые товары
         $newProducts = Yii::$app->cache->get('new-products');
         if ($newProducts === false) {
             $newProducts = Product::find()->where(['new' => 1])->limit(3)->asArray()->all();
-            Yii::$app->cache->set('new-products', $newProducts);
+            Yii::$app->cache->set('new-products', $newProducts, 25);
         }
         // получаем товары распродажи
         $saleProducts = Yii::$app->cache->get('sale-products');
         if ($saleProducts === false) {
             $saleProducts = Product::find()->where(['sale' => 1])->limit(3)->asArray()->all();
-            Yii::$app->cache->set('sale-products', $saleProducts);
+            Yii::$app->cache->set('sale-products', $saleProducts, 25);
         }
 		// устанавливаем мета-теги для страницы
         $this->setMetaTags();

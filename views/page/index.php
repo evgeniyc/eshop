@@ -68,10 +68,10 @@ use yii\helpers\Html;
             </div>
 
             <div class="col-sm-9">
-                <?php if (!empty($hits)): ?>
+                <?php if (!empty($hitProducts)): ?>
                     <h2>Лидеры продаж</h2>
                     <div class="row">
-                        <?php foreach ($hits as $hit): ?>
+                        <?php foreach ($hitProducts as $hit): ?>
                             <div class="col-sm-4">
                                 <div class="product-wrapper text-center">
                                     <?=
