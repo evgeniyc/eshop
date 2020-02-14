@@ -31,13 +31,31 @@ AppAsset::register($this);
     <div class="header-top">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
-                    <ul class="nav nav-pills">
+                <div class="col-sm-8">
+                    <ul class="nav nav-pills pull-left">
                         <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
                         <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
                     </ul>
+					<div id="search-form">
+						<form method="post" action="<?= Url::to(['catalog/search']); ?>" class="">
+							<?=
+							Html::hiddenInput(
+								Yii::$app->request->csrfParam,
+								Yii::$app->request->csrfToken
+							);
+							?>
+							<div class="input-group">
+								<input type="text" name="query" class="form-control" placeholder="Поиск по каталогу">
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <ul class="nav nav-pills pull-right">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -110,9 +128,9 @@ AppAsset::register($this);
 
     <div class="header-bottom">
         <div class="container">
-            <div class="row">
+        <!--<div class="row">
                 <div class="col-sm-8">
-                    <!--<div id="menu">
+                    <div id="menu">
                         <ul>
                             <li>
                                 <a href="<?= Url::to(['catalog/index']); ?>">
@@ -138,7 +156,7 @@ AppAsset::register($this);
                                 </li>
                             <?php endforeach; ?>
                         </ul>
-                    </div>-->
+                    </div>
                 </div>
                 <div class="col-sm-4">
                     <form method="post" action="<?= Url::to(['catalog/search']); ?>" class="pull-right">
@@ -158,7 +176,7 @@ AppAsset::register($this);
                         </div>
                     </form>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 
