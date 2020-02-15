@@ -54,7 +54,7 @@ use yii\helpers\Html;
 
 <section>
     <div class="container">
-        <div class="row">
+        <div class="row row-flex">
             <div class="col-sm-3">
                     <h2>Каталог</h2>
                     <div class="category-products">

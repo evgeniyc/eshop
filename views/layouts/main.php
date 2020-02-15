@@ -72,14 +72,19 @@ AppAsset::register($this);
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    <div class="pull-left">
+                    <div id="logo-block" class="pull-left">
                         <a href="<?= Url::home(); ?>">
+							
                             <?=
                             Html::img(
-                                '@web/images/home/logo.png',
-                                ['alt' => Yii::$app->params['shopName']]
+                                '@web/images/home/logo2.png',
+                                [
+									'alt' => Yii::$app->params['shopName'],
+									'id' => 'logo-img',
+								]
                             );
                             ?>
+							<?= Yii::$app->params['shopName'] ?>
                         </a>
                     </div>
                 </div>

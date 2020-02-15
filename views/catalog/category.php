@@ -13,7 +13,7 @@ use yii\widgets\LinkPager;
 
 <section>
     <div class="container">
-        <div class="row">
+        <div class="row row-flex">
             <div class="col-sm-3">
                 <div class="left-sidebar">
                     <h2>Каталог</h2>
