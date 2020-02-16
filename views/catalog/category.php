@@ -13,9 +13,9 @@ use yii\widgets\LinkPager;
 
 <section>
     <div class="container">
-        <div class="row row-flex">
+        <div id="category" class="row row-flex">
             <div class="col-sm-3">
-                <div class="left-sidebar">
+                <div id="left-sidebar">
                     <h2>Каталог</h2>
                     <div class="category-products">
                         <?= TreeWidget::widget(); ?>
@@ -28,26 +28,39 @@ use yii\widgets\LinkPager;
                 </div>
             </div>
 
-            <div class="col-sm-9">
+            <div id="category-content" class="col-sm-9">
                 <?= ChainWidget::widget(['itemCurrent' => $category['id'], 'showCurrent' => false]); ?>
                 <?php if (!empty($products)): ?>
-                    <h2><?= Html::encode($category['name']); ?></h2>
-                    <div class="row">
+                    <h2>Категория: <?= Html::encode($category['name']); ?></h2>
+                    <div class="row no-gutters">
                         <?php foreach ($products as $product): ?>
-                            <div class="col-sm-4">
+                            <div class="col-6 col-sm-4 col-md-3">
                                 <div class="product-wrapper text-center">
-                                    <?=
-                                    Html::img(
-                                        '@web/images/products/medium/'.$product['image'],
-                                        ['alt' => $product['name'], 'class' => 'img-responsive']
-                                    );
-                                    ?>
-                                    <h2><?= $product['price']; ?> грн.</h2>
-                                    <p>
-                                        <a href="<?= Url::to(['catalog/product', 'id' => $product['id']]); ?>">
-                                            <?= Html::encode($product['name']); ?>
-                                        </a>
-                                    </p>
+									<a href="<?= Url::to(['catalog/product', 'id' => $product['id']]); ?>">
+										<p class="product-title"><?= Html::encode($product['name']); ?></p>
+										<p class="product-info"><?php
+											if ($product['new']) { // новинка?
+												echo Html::img(
+													'@web/images/home/new.png',
+													['alt' => 'Новинка', 'class' => 'new']
+												);
+											}
+											if ($product['sale']) { // распродажа?
+												echo Html::img(
+													'@web/images/home/sale.png',
+													['alt' => 'Распродажа', 'class' => 'sale']
+												);
+											}
+											?>
+										</p>
+										<?=
+										Html::img(
+											'@web/images/products/medium/'.$product['image'],
+											['alt' => $product['name'], 'class' => 'img-responsive']
+										);
+										?>
+										<p class="product-price">Цена: <?= $product['price']; ?> грн.</p>
+									</a>
                                     <form method="post"
                                           action="<?= Url::to(['basket/add']); ?>">
                                         <input type="hidden" name="id"
@@ -63,20 +76,6 @@ use yii\widgets\LinkPager;
                                             Добавить в корзину
                                         </button>
                                     </form>
-                                    <?php
-                                    if ($product['new']) { // новинка?
-                                        echo Html::img(
-                                            '@web/images/home/new.png',
-                                            ['alt' => 'Новинка', 'class' => 'new']
-                                        );
-                                    }
-                                    if ($product['sale']) { // распродажа?
-                                        echo Html::img(
-                                            '@web/images/home/sale.png',
-                                            ['alt' => 'Распродажа', 'class' => 'sale']
-                                        );
-                                    }
-                                    ?>
                                 </div>
                             </div>
                         <?php endforeach; ?>

@@ -26,14 +26,14 @@ use yii\helpers\Url;
 
             <div class="col-sm-9">
                 <?php if (!empty($roots)): ?>
-                    <h2>Одежда и обувь</h2>
+                    <h2>Категории</h2>
                     <div class="row">
                         <?php foreach ($roots as $root): ?>
                             <div class="col-sm-6 col-md-4">
                                 <div class="thumbnail">
                                     <?=
                                     Html::img(
-                                        '@web/images/roots/'.$root['image'],
+                                        '@web/images/categories/thumb/'.$root['image'],
                                         ['alt' => $root['name']]
                                     );
                                     ?>
@@ -59,7 +59,7 @@ use yii\helpers\Url;
                                 <div class="thumbnail">
                                     <?=
                                     Html::img(
-                                        '@web/images/brands/'.$brand['image'],
+                                        '@web/images/brands/thumb/'.$brand['image'],
                                         ['alt' => $brand['name']]
                                     );
                                     ?>

@@ -105,18 +105,18 @@ AppAsset::register($this);
 						'options' => ['class' => 'navbar-nav navbar-right'],
 						'encodeLabels' => false,
 						'items' => [
-							['label' => FAS::i('home').' Главная', 'url' => ['/page/index']],
+							['label' => FAS::i('home').' Главная', 'url' => ['/catalog/index']],
 							['label' => FAS::i('crosshairs').' О нас', 'url' => ['/page/about']],
 							['label' => FAS::i('id-badge').' Контакты', 'url' => ['/site/contact']],
 							['label' => FAS::i('shopping-cart').' Корзина', 'url' => ['/basket/index']],
 							
 							Yii::$app->user->isGuest ? (
-								['label' => 'Войти', 'url' => ['/site/login']]
+								['label' => FAS::i('sign-out-alt').' Войти', 'url' => ['/site/login']]
 							) : (
 								'<li>'
 								. Html::beginForm(['/site/logout'], 'post')
 								. Html::submitButton(
-									'Выйти (' . Yii::$app->user->identity->username . ')',
+									FAS::i('sign-out-alt').' Выйти (' . Yii::$app->user->identity->username . ')',
 									['class' => 'btn btn-link logout']
 								)
 								. Html::endForm()
@@ -142,7 +142,7 @@ AppAsset::register($this);
                                     Каталог
                                 </a>
                             </li>
-                            <?php foreach ($this->context->pageMenu as $page): ?>
+                            <?php /*foreach ($this->context->pageMenu as $page): ?>
                                 <li>
                                     <a href="<?= Url::to(['page/view', 'slug' => $page['slug']]); ?>">
                                         <?= $page['name']; ?>
@@ -170,7 +170,7 @@ AppAsset::register($this);
                             Yii::$app->request->csrfParam,
                             Yii::$app->request->csrfToken
                         );
-                        ?>
+                        */?>
                         <div class="input-group">
                             <input type="text" name="query" class="form-control" placeholder="Поиск по каталогу">
                             <div class="input-group-btn">
@@ -189,9 +189,9 @@ AppAsset::register($this);
 
 <?= $content ?>
 
-<footer>
+<footer><br>
     <div class="container">
-        Copyright © 2018 E-SHOPPER Inc. All rights reserved.
+        Copyright © <?= date('Y') ?> E-SHOPPER Inc. All rights reserved.
     </div>
 </footer>
 
