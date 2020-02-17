@@ -117,6 +117,12 @@ a.desc:after {
 	background: #2F1E0A;
 	box-shadow: 0 0 5px black;
 }
+.breadcrumb {
+	padding: 5px;
+	margin: 10px -15px 0 0;
+	border: 1px solid black;
+	box-shadow: 0 0 5px black;
+}
 .row-flex .col-sm-3 {
 	
 	
@@ -132,7 +138,7 @@ a.desc:after {
 	margin-top: 3px;
 }
 #w0 a {
-	color: #E9F0C0;
+	color: #DCD294;/*#E9F0C0;*/
 }
 #w0 a:hover, #w0 button:hover {
 	color: black;
@@ -142,7 +148,7 @@ a.desc:after {
 	background: #eeeeee;
 }
 #w0 button {
-	color: #E9F0C0;
+	color: #DCD294;
 }
 #logo-block {
 	padding-top: 6px;
@@ -227,4 +233,5 @@ footer {
 	margin-top: 10px;
 	box-shadow: 0 0 5px black;
 	border: 1px solid black;
+	padding: 5px;
 }

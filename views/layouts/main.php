@@ -189,11 +189,11 @@ AppAsset::register($this);
 
 <?= $content ?>
 
-<footer><br>
+<footer>
     <div class="container">
-        Copyright © <?= date('Y') ?> E-SHOPPER Inc. All rights reserved.
+        Copyright © <?= date('Y') ?> ESHOP Ltd. All rights reserved.
     </div>
-</footer>
+</footer><br>
 
 <?php
 $checkout = Url::to(['order/checkout']);
