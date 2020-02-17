@@ -13,7 +13,7 @@ use yii\widgets\LinkPager;
 
 <section>
     <div class="container">
-	<?= ChainWidget::widget(['itemCurrent' => $category['id'], 'showCurrent' => false]); ?>
+	<?= ChainWidget::widget(['itemCurrent' => $category['id'], 'showCurrent' => true]); ?>
         <div class="row no-gutters row-flex">
             <div class="col-sm-3">
                 <div id="left-sidebar">
@@ -31,7 +31,6 @@ use yii\widgets\LinkPager;
 
             <div class="col-sm-9">
 				<div id="main-part">
-					
 					<?php if (!empty($products)): ?>
                     <h2>Категория: <?= Html::encode($category['name']); ?></h2>
                     <div class="row no-gutters">

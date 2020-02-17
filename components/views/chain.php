@@ -10,6 +10,10 @@ if (empty($chain))
 ?>
 
 <ol class="breadcrumb">
+<?php $last = array_pop($chain);?>
+	<li>
+        <a href="<?= Url::Home() ?>">Главная</a>
+    </li>
 <?php foreach ($chain as $item): ?>
     <li>
         <a href="<?= Url::to(['catalog/category', 'id' => $item['id']]); ?>">
@@ -17,5 +21,6 @@ if (empty($chain))
         </a>
     </li>
 <?php endforeach; ?>
+	<li><?=$last['name']?></li>
 </ol>
 
