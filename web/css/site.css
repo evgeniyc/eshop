@@ -3,39 +3,6 @@ body {
     height: 100%;
 }
 
-.wrap {
-    min-height: 100%;
-    height: auto;
-    margin: 0 auto -60px;
-    padding: 0 0 60px;
-}
-
-.wrap > .container {
-    padding: 70px 15px 20px;
-}
-
-.footer {
-    height: 60px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
-    padding-top: 20px;
-}
-
-.jumbotron {
-    text-align: center;
-    background-color: transparent;
-}
-
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-}
-
-.not-set {
-    color: #c55;
-    font-style: italic;
-}
-
 /* add sorting icons to gridview sort links */
 a.asc:after, a.desc:after {
     position: relative;
@@ -117,14 +84,6 @@ a.desc:after {
 	background: #2F1E0A;
 	box-shadow: 0 0 5px black;
 }
-.row-flex .col-sm-3 {
-	
-	
-}
-.row-flex .col-sm-9 {
-	background: #E9F0C0;
-	box-shadow: 0 0 5px 0 black;
-}
 .product-image img {
 	width: 100%;
 }
@@ -154,15 +113,29 @@ a.desc:after {
     display: flex;
     flex-flow: row wrap;
 }
-#category {
-	padding-top: 10px;
-	
-}
-#category > div {
+#left-sidebar {
+	background: #AEC55D;
+	box-shadow: 0 0 5px black;
+	padding: 0 10px;
+	margin: 10px 10px 10px 0;
+	border: 1px solid black;
 	height: 100%;
 }
-#category-content {
+#main-part {
+	background: #DCD294;
+	box-shadow: 0 0 5px black;
+	padding: 0 10px;
+	margin: 10px 0 10px 0;
 	border: 1px solid black;
+	height: 100%;
+}
+.no-gutters {
+	margin: 0;
+	padding: 0;
+}
+.no-gutters > div {
+	margin: 0;
+	padding: 0;
 }
 .category-products a {
 	color: yellow;
@@ -185,14 +158,6 @@ a.desc:after {
 	font-weight: bold;
 	text-shadow: -1px 0 1px black;
 }
-#left-sidebar {
-	background: #AEC55D;
-	box-shadow: 0 0 5px black;
-	padding: 10px;
-	height: 100%;
-	width: 100%;
-	border: 1px solid black;
-}
 .product-wrapper {
 	border: 1px solid black;
 	margin: 10px;
@@ -204,27 +169,23 @@ a.desc:after {
 .product-wrapper a {
 	text-decoration: none;
 }
-.row .no-gutters > div {
-	padding: 0;
-	margin: 0;
-}
 .product-info {
 	position: absolute;
 	top: 55px;
 	color: blue;
 	text-shadow: -1px 1px 1px black;
 }
-#category-content {
-	background: #DCD294;
-	box-shadow: 0 0 5px black; 
-}
 .thumbnail {
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+#zero {
+	height: 10px;
 }
 footer {
 	background: #739C3E;
 	margin-top: 10px;
 	box-shadow: 0 0 5px black;
 	border: 1px solid black;
+	padding: 5px;
 }

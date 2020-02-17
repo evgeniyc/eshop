@@ -13,7 +13,8 @@ use yii\widgets\LinkPager;
 
 <section>
     <div class="container">
-        <div id="category" class="row row-flex">
+	<?= ChainWidget::widget(['itemCurrent' => $category['id'], 'showCurrent' => false]); ?>
+        <div class="row no-gutters row-flex">
             <div class="col-sm-3">
                 <div id="left-sidebar">
                     <h2>Каталог</h2>
@@ -28,9 +29,10 @@ use yii\widgets\LinkPager;
                 </div>
             </div>
 
-            <div id="category-content" class="col-sm-9">
-                <?= ChainWidget::widget(['itemCurrent' => $category['id'], 'showCurrent' => false]); ?>
-                <?php if (!empty($products)): ?>
+            <div class="col-sm-9">
+				<div id="main-part">
+					
+					<?php if (!empty($products)): ?>
                     <h2>Категория: <?= Html::encode($category['name']); ?></h2>
                     <div class="row no-gutters">
                         <?php foreach ($products as $product): ?>
@@ -81,11 +83,13 @@ use yii\widgets\LinkPager;
                         <?php endforeach; ?>
                     </div>
 
-                    <?= LinkPager::widget(['pagination' => $pages]); /* постраничная навигация */ ?>
-                <?php else: ?>
-                    <p>Нет товаров в этой категории.</p>
-                <?php endif; ?>
+					<?= LinkPager::widget(['pagination' => $pages]); /* постраничная навигация */ ?>
+					<?php else: ?>
+						<p>Нет товаров в этой категории.</p>
+					<?php endif; ?>
+				</div>
             </div>
         </div>
     </div>
 </section>
+<div id="zero" class="row"></div>

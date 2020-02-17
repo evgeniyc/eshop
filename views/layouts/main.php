@@ -189,7 +189,7 @@ AppAsset::register($this);
 
 <?= $content ?>
 
-<footer><br>
+<footer>
     <div class="container">
         Copyright © <?= date('Y') ?> E-SHOPPER Inc. All rights reserved.
     </div>
