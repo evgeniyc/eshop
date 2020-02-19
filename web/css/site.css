@@ -200,3 +200,6 @@ footer {
 	border: 1px solid black;
 	padding: 5px;
 }
+.active > a {
+	color: red !important;
+}
