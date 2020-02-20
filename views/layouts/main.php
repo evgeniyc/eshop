@@ -84,23 +84,12 @@ AppAsset::register($this);
 								]
                             );
                             ?>
-							<?= Yii::$app->params['shopName'] ?>
+							<?= Yii::$app->name ?>
                         </a>
                     </div>
                 </div>
-                <div class="col-sm-8"><!--
-                    <ul class="pull-right">
-                        <li><i class="fa fa-user"></i> <a href="#">Аккаунт</a></li>
-                        <li><i class="fa fa-star"></i> <a href="#">Избранное</a></li>
-                        <li><i class="fa fa-crosshairs"></i> <a href="#">Оформить</a></li>
-                        <li>
-                            <i class="fa fa-shopping-cart"></i>
-                            <a href="<?= Url::to(['basket/index']); ?>">Корзина</a>
-                        </li>
-                        <li><i class="fa fa-lock"></i> <a href="#">Войти</a></li>
-                    </ul>-->
-					
-					<?php
+                <div class="col-sm-8">
+                   	<?php
 					echo Nav::widget([
 						'options' => ['class' => 'navbar-nav navbar-right'],
 						'encodeLabels' => false,
@@ -131,18 +120,18 @@ AppAsset::register($this);
         </div>
     </div>
 
-    <div class="header-bottom">
-        <div class="container">
-        <!--<div class="row">
+    <!--<div class="header-bottom">
+	<div class="container">
+        <div class="row">
                 <div class="col-sm-8">
                     <div id="menu">
                         <ul>
                             <li>
                                 <a href="<?= Url::to(['catalog/index']); ?>">
-                                    Каталог
+                                    Статические страницы
                                 </a>
                             </li>
-                            <?php /*foreach ($this->context->pageMenu as $page): ?>
+                            <?php foreach ($this->context->pageMenu as $page): ?>
                                 <li>
                                     <a href="<?= Url::to(['page/view', 'slug' => $page['slug']]); ?>">
                                         <?= $page['name']; ?>
@@ -170,7 +159,7 @@ AppAsset::register($this);
                             Yii::$app->request->csrfParam,
                             Yii::$app->request->csrfToken
                         );
-                        */?>
+                        ?>
                         <div class="input-group">
                             <input type="text" name="query" class="form-control" placeholder="Поиск по каталогу">
                             <div class="input-group-btn">
@@ -181,9 +170,9 @@ AppAsset::register($this);
                         </div>
                     </form>
                 </div>
-            </div>-->
+            </div>
         </div>
-    </div>
+    </div>-->
 
 </header>
 

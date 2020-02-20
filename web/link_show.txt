@@ -1,0 +1,115 @@
+Array ( 
+	[1] => Array ( 
+		[id] => 1 
+		[name] => О нас 
+		[slug] => about 
+		[parent_id] => 0 
+		[childs] => Array ( 
+			[2] => Array ( 
+				[id] => 2 
+				[name] => Контакты 
+				[slug] => contacts 
+				[parent_id] => 1 
+			) 
+		) 
+	) 
+	
+	[3] => Array ( 
+		[id] => 3 
+		[name] => Перечисления 
+		[slug] => list 
+		[parent_id] => 0 
+	) 
+) 
+
+
+Array ( 
+	[1] => Array ( 
+		[id] => 1 
+		[name] => О нас 
+		[slug] => about 
+		[parent_id] => 0 
+	) 
+	[3] => Array ( 
+		[id] => 3 
+		[name] => Перечисления 
+		[slug] => list 
+		[parent_id] => 0 
+	) 
+) 
+==============================================================================================
+
+Array ( 
+	[1] => Array ( 
+		[id] => 1 
+		[name] => О нас 
+		[slug] => about 
+		[parent_id] => 0 
+		[childs] => Array ( 
+			[2] => Array ( 
+				[id] => 2 
+				[name] => Контакты 
+				[slug] => contacts 
+				[parent_id] => 1 
+			) 
+		) 
+	) 
+	[3] => Array ( 
+		[id] => 3 
+		[name] => Перечисления 
+		[slug] => list 
+		[parent_id] => 0 
+		[childs] => Array ( 
+			[4] => Array ( 
+				[id] => 4 
+				[name] => Страница потомок 
+				[slug] => PageParent 
+				[parent_id] => 3 
+			) 
+		) 
+	) 
+) 
+==============================================================================================
+
+Array ( 
+	[1] => Array ( 
+		[id] => 1 
+		[name] => О нас 
+		[slug] => about 
+		[parent_id] => 0 
+		[childs] => Array ( 
+			[2] => Array ( 
+				[id] => 2 
+				[name] => Контакты 
+				[slug] => contacts 
+				[parent_id] => 1 
+			) 
+		) 
+	) 
+	[2] => Array ( 
+		[id] => 2 
+		[name] => Контакты 
+		[slug] => contacts 
+		[parent_id] => 1 
+	) 
+	[3] => Array ( 
+		[id] => 3 
+		[name] => Перечисления 
+		[slug] => list 
+		[parent_id] => 0 
+		[childs] => Array ( 
+			[4] => Array ( 
+				[id] => 4 
+				[name] => Страница потомок 
+				[slug] => PageParent 
+				[parent_id] => 3 
+			) 
+		) 
+	) 
+	[4] => Array ( 
+		[id] => 4 
+		[name] => Страница потомок 
+		[slug] => PageParent 
+		[parent_id] => 3 
+	) 
+) 

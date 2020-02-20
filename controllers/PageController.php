@@ -52,4 +52,11 @@ class PageController extends AppController {
         }
         throw new NotFoundHttpException('Запрошенная страница не найдена');
     }
+	
+	public function actionTest() {
+		$data = Page::getTree();
+		return $this->render(
+                'test',
+                ['data' => $data]);
+	}
 }

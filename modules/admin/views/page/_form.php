@@ -45,7 +45,7 @@ use yii\widgets\ActiveForm;
                 'elfinder',
                 [
                     // разработанны стандартные настройки basic, standard, full
-                    'preset' => 'basic',
+                    'preset' => 'standart',
                     'inline' => false, // по умолчанию false
                 ]
             ),

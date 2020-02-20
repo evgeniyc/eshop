@@ -17,12 +17,14 @@ class CatalogController extends AppController {
     public function actionIndex() {
         // получаем корневые категории
         $roots = Yii::$app->cache->get('root-categories');
+		$roots = false;
         if ($roots === false) {
             $roots = Category::find()->where(['parent_id' => 0])->asArray()->all();
             Yii::$app->cache->set('root-categories', $roots, self::cacheTime);
         }
         // получаем популярные бренды
         $brands = Yii::$app->cache->get('popular-brands');
+		$brands = false;
         if ($brands === false) {
             $brands = (new Brand())->getPopularBrands();
             Yii::$app->cache->set('popular-brands', $brands, self::cacheTime);
