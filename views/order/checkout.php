@@ -14,8 +14,9 @@ use yii\helpers\Url;
  * данные, чтобы заполнить ими поля формы, не заставляя пользователя
  * заполнять форму повторно
  */
-$name = '';
-$email = '';
+$user_info = Yii::$app->user->identity;
+$name = $user_info->username;
+$email = $user_info->email;
 $phone = '';
 $address = '';
 $comment = '';
@@ -31,7 +32,6 @@ if (Yii::$app->session->hasFlash('checkout-data')) {
 
 <section>
 	<div class="container">
-	<?php print_r(Yii::$app->user->identity); ?>
 	<h1>Оформление заказа</h1>
 	<div id="checkout">
 		<?php

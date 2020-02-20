@@ -13,7 +13,7 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
 	'language' => 'ru-RU',
-	'defaultRoute' => 'page',
+	'defaultRoute' => 'catalog',
 	'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',

@@ -1,6 +1,6 @@
 html,
 body {
-    height: 100%;
+    background: #E9F0C0;
 }
 
 /* add sorting icons to gridview sort links */
@@ -76,7 +76,9 @@ a.desc:after {
 .nav > li > form > button.logout:hover {
     text-decoration: none;
 }
-
+.header-top {
+	
+}
 .nav > li > form > button.logout:focus {
     outline: none;
 }
