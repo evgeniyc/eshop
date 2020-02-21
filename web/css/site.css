@@ -205,3 +205,8 @@ footer {
 .active > a {
 	color: red !important;
 }
+.logo {
+	font-size: 100% !important;
+	line-height: 1.5 !important;
+	font-style: italic !important;
+}
