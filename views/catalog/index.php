@@ -7,6 +7,8 @@ use app\components\TreeWidget;
 use app\components\BrandsWidget;
 use yii\helpers\Html;
 use yii\helpers\Url;
+
+$this->title = "Главная";
 ?>
 
 <section>
@@ -58,7 +60,7 @@ use yii\helpers\Url;
 								<div class="col-6 col-sm-4 col-md-3">
 									<div class="product-wrapper text-center">
 										<a href="<?= Url::to(['catalog/brand', 'id' => $brand['id']]); ?>">
-											<p class="product-title"><?= Html::encode($root['name']); ?></p>
+											<p class="product-title"><?= Html::encode($brand['name']); ?></p>
 											
 											<?=
 												Html::img(

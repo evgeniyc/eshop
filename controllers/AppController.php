@@ -30,7 +30,7 @@ class AppController extends Controller {
     }
 	 
     protected function setMetaTags($title = '', $keywords = '', $description = '') {
-        $this->view->title = $title ?: Yii::$app->params['defaultTitle'];
+        $this->view->title = $title ?: Yii::$app->name;
         $this->view->registerMetaTag([
             'name' => 'keywords',
             'content' => $keywords ?: Yii::$app->params['defaultKeywords']

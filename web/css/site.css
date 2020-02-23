@@ -77,7 +77,7 @@ a.desc:after {
     text-decoration: none;
 }
 .header-top {
-	
+	border-top: 1px solid black;
 }
 .nav > li > form > button.logout:focus {
     outline: none;

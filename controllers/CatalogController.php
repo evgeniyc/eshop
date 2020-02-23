@@ -70,7 +70,7 @@ class CatalogController extends AppController {
         list($products, $pages, $category) = $data;
         // устанавливаем мета-теги для страницы
         $this->setMetaTags(
-            $category['name'] . ' | ' . Yii::$app->params['shopName'],
+            $category['name'] . ' | ' . Yii::$app->name,
             $category['keywords'],
             $category['description']
         );

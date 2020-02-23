@@ -17,6 +17,13 @@ use yii\helpers\Url;
 <?php 
 	$this->title = 'Контакты';
 	$this->params['breadcrumbs'][] = $this->title;
+	$name = '';
+	$email = '';
+	if (isset(Yii::$app->user->id)) 
+	{
+		$name = Yii::$app->user->identity->username;
+		$email = Yii::$app->user->identity->email;
+	}
 ?>
 <section>
     <div class="container">
@@ -42,7 +49,7 @@ use yii\helpers\Url;
 						<?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
 							<div class="alert alert-success">
-								Благодарим Вас за обращение к нам. Мы ответим вам как можно скорее.
+								Благодарим Вас за обращение к нам. Мы ответим как можно скорее.
 							</div>
 
 							<p>
@@ -65,9 +72,9 @@ use yii\helpers\Url;
 
 										<?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
-										<?= $form->field($model, 'name')->textInput(['autofocus' => true, 'value' => Yii::$app->user->identity->username]) ?>
+										<?= $form->field($model, 'name')->textInput(['autofocus' => true, 'value' => $name]) ?>
 
-										<?= $form->field($model, 'email')->textInput(['value' => Yii::$app->user->identity->email]) ?>
+										<?= $form->field($model, 'email')->textInput(['value' => $email]) ?>
 
 										<?= $form->field($model, 'subject') ?>
 
