@@ -79,6 +79,14 @@ a.desc:after {
 .header-top {
 	border-top: 1px solid black;
 }
+.header-top a {
+	color: #246C9B;
+}
+.header-top  .input-group {
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: 0 0 2px black;
+}
 .nav > li > form > button.logout:focus {
     outline: none;
 }

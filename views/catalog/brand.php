@@ -12,21 +12,25 @@ use yii\widgets\LinkPager;
 
 <section>
     <div class="container">
-        <div class="row">
+	
+        <div class="row no-gutters row-flex">
             <div class="col-sm-3">
-                <h2>Каталог</h2>
-                <div class="category-products">
-                    <?= TreeWidget::widget(); ?>
-                </div>
+                <div id="left-sidebar">
+                    <h2>Каталог</h2>
+                    <div class="category-products">
+                        <?= TreeWidget::widget(); ?>
+                    </div>
 
-                <h2>Бренды</h2>
-                <div class="brand-products">
-                    <?= BrandsWidget::widget(); ?>
+                    <h2>Бренды</h2>
+                    <div class="brand-products">
+                        <?= BrandsWidget::widget(); ?>
+                    </div>
                 </div>
             </div>
 
             <div class="col-sm-9">
-                <?php if (!empty($products)): /* выводим товары бренда */ ?>
+				<div id="main-part">
+					<?php if (!empty($products)): /* выводим товары бренда */ ?>
                     <h2><?= Html::encode($brand['name']); ?></h2>
                     <div class="row">
                         <?php foreach ($products as $product): ?>
@@ -70,7 +74,9 @@ use yii\widgets\LinkPager;
                 <?php else: ?>
                     <p>Нет товаров у этого бренда.</p>
                 <?php endif; ?>
+				</div>
             </div>
         </div>
     </div>
 </section>
+<div id="zero" class="row"></div>
