@@ -73,7 +73,7 @@ if (Yii::$app->session->hasFlash('checkout-data')) {
 					echo $form->field($order, 'email')
 							  ->input('email', ['value' => $email]);
 					echo $form->field($order, 'phone')
-							  ->textInput(['value' => $phone]);
+							  ->textInput(['value' => $phone])->widget(\yii\widgets\MaskedInput::className(), ['mask' => '(999) 999-99-99']);
 					echo $form->field($order, 'address')
 							  ->textarea(['rows' => 2, 'value' => $address]);
 					echo $form->field($order, 'comment')
