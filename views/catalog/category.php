@@ -9,6 +9,7 @@ use app\components\ChainWidget;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
+use rmrevin\yii\fontawesome\FAS;
 ?>
 
 <section>
