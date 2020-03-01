@@ -35,6 +35,9 @@ use yii\widgets\LinkPager;
             <div class="col-sm-9">
 				<div id="main-part">
 					<h2><?= Html::encode($this->title) ?></h2>
+					<div class="img-half">
+						<?= Html::img('@web/images/home/team.jpg',['class' => 'img-responsive'])?>
+					</div>
                     <p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi enim ipsum, maximus eget suscipit et, gravida in ligula. Curabitur a augue quam. Pellentesque consequat turpis justo, at ullamcorper mauris molestie et. Duis cursus fringilla lobortis. Vestibulum malesuada vestibulum diam, quis facilisis nunc aliquet vel. Fusce sed leo dapibus, viverra dolor eget, interdum odio. Praesent ut vulputate ante. Morbi vehicula, felis in vulputate vestibulum, nulla purus vulputate ipsum, malesuada tincidunt velit dui vel enim. Suspendisse at erat ut tellus laoreet accumsan sit amet pellentesque nisl. Morbi malesuada elit at nulla dapibus, a consequat tortor ultricies. Donec vehicula dui a massa sollicitudin, ac vestibulum erat congue. Integer in ex at quam tincidunt varius sed id odio. Ut quis vulputate odio, id dapibus tortor. Pellentesque pulvinar venenatis nisi, eu placerat mi. 
 					</p>

@@ -60,7 +60,7 @@ $this->title = "Главная";
 								<div class="col-6 col-sm-4 col-md-3">
 									<div class="product-wrapper text-center">
 										<a href="<?= Url::to(['catalog/brand', 'id' => $brand['id']]); ?>">
-											<p class="product-title"><?= Html::encode($brand['name']); ?></p>
+											<!--<p class="product-title"><?= Html::encode($brand['name']); ?></p>-->
 											
 											<?=
 												Html::img(
@@ -68,7 +68,7 @@ $this->title = "Главная";
 												['alt' => $brand['name'], 'class' => 'img-responsive']
 											);
 											?>
-											<p><?= Html::encode($brand['content']); ?></p>
+											<!--<p><?= Html::encode($brand['content']); ?></p>-->
 										</a>
 									</div>
 								</div>

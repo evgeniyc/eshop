@@ -10,6 +10,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 use rmrevin\yii\fontawesome\FAS;
+use yii\bootstrap\Modal;
 ?>
 
 <section>
@@ -73,10 +74,12 @@ use rmrevin\yii\fontawesome\FAS;
                                             Yii::$app->request->csrfToken
                                         );
                                         ?>
-                                        <button type="submit" class="btn btn-warning">
+										<!--<a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#orderModal">-->
+                                        <button type="submit" class="btn btn-warning" data-toggle="modal">
                                             <i class="fa fa-shopping-cart"></i>
                                             Добавить в корзину
                                         </button>
+										<!--</a>-->
                                     </form>
                                 </div>
                             </div>
@@ -93,3 +96,13 @@ use rmrevin\yii\fontawesome\FAS;
     </div>
 </section>
 <div id="zero" class="row"></div>
+<?php
+	Modal::begin([
+    'header' => '<h2>Заказ добавлен в корзину</h2>',
+	'id' => 'orderModal',
+    ]);
+
+	echo 'Ваш заказ успешно добавлен в корзину. Изменить количество и оформить его Вы сможете перейдя на пункт меню "Корзина".';
+
+	Modal::end();
+?>

@@ -45,6 +45,7 @@ class Basket extends Model {
             $amount = $amount + $item['price'] * $item['count'];
         }
         $basket['amount'] = $amount;
+		$basket['counts'] = count($basket['products']);
         $session->set('basket', $basket);
     }
 
