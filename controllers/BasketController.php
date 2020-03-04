@@ -112,5 +112,18 @@ class BasketController extends AppController {
             return $this->redirect(['basket/index']);
         }
     }
+	
+	public function actionAjaxadd () {
+		if (Yii::$app->request->isAjax) { // с использованием AJAX
+			$data = Yii::$app->request->post();
+			$basket = new Basket();
+			$basket->addToBasket($data['id'], $data['count']);
+			//$this->renderPartial('ajax',['data' => $data]);
+			return true;
+			
+		} else
+			return false;
+		
+	}
     
 }

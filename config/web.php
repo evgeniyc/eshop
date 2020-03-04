@@ -55,7 +55,7 @@ $config = [
         'db' => $db,
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            'showScriptName' => false,/*
             'rules' => [ 
                 'catalog/category/<id:\d+>/page/<page:\d+>' => 'catalog/category',
                 'catalog/category/<id:\d+>' => 'catalog/category',
@@ -69,7 +69,7 @@ $config = [
                 // правило для первой страницы с пустым запросом
                 'catalog/search' => 'catalog/search',
 
-            ],
+            ],*/
         ],
     ],
 	'controllerMap' => [

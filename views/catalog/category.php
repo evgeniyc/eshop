@@ -10,6 +10,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 use rmrevin\yii\fontawesome\FAS;
+use yii\bootstrap\Modal;
 ?>
 
 <section>
@@ -78,6 +79,10 @@ use rmrevin\yii\fontawesome\FAS;
                                             Добавить в корзину
                                         </button>
                                     </form>
+									<button class="btn btn-warning add-to-basket">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            Добавить в корзину
+                                    </button>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -93,3 +98,14 @@ use rmrevin\yii\fontawesome\FAS;
     </div>
 </section>
 <div id="zero" class="row"></div>
+<div id="ajax-answer"></div>
+<?php
+Modal::begin([
+    'header' => '<h2>Заказ добавлен.</h2>',
+    'id' => 'basket-message',
+    //'size'=>'modal-lg',
+    //'footer' => $footer
+]);
+	echo 'Ваш заказ успешно добавлен в корзину.';
+Modal::end();
+?>
