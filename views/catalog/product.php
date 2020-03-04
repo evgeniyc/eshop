@@ -71,7 +71,7 @@ $this->registerJs('function Quant(el){
 										'onclick' => 'Quant(this)',
 										]
 									)?>
-									<input name="count" type="text" value="1" id="quant" />
+									<input name="count" type="text" value="1" id="quant" size="3"/>
 									<?= Html::button(FAS::i('minus'),[
 										'id' => 'mquant',
 										'onclick' => 'Quant(this)',
@@ -86,6 +86,7 @@ $this->registerJs('function Quant(el){
 									);
 									?>
 									<button type="submit"
+											id="prod-submit"
 											class="btn btn-warning">
 										<i class="fa fa-shopping-cart"></i>
 										Добавить в корзину

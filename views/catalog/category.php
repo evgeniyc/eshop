@@ -74,10 +74,12 @@ use yii\bootstrap\Modal;
                                             Yii::$app->request->csrfToken
                                         );
                                         ?>
-                                        <button type="submit" class="btn btn-warning">
+										<!--<a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#orderModal">-->
+                                        <button type="submit" class="btn btn-warning" data-toggle="modal">
                                             <i class="fa fa-shopping-cart"></i>
                                             Добавить в корзину
                                         </button>
+										<!--</a>-->
                                     </form>
 									<button class="btn btn-warning add-to-basket">
                                             <i class="fa fa-shopping-cart"></i>
@@ -98,6 +100,7 @@ use yii\bootstrap\Modal;
     </div>
 </section>
 <div id="zero" class="row"></div>
+
 <div id="ajax-answer"></div>
 <?php
 Modal::begin([
@@ -108,4 +111,14 @@ Modal::begin([
 ]);
 	echo 'Ваш заказ успешно добавлен в корзину.';
 Modal::end();
+?>
+<?php
+	Modal::begin([
+    'header' => '<h2>Заказ добавлен в корзину</h2>',
+	'id' => 'orderModal',
+    ]);
+
+	echo 'Ваш заказ успешно добавлен в корзину. Изменить количество и оформить его Вы сможете перейдя на пункт меню "Корзина".';
+
+	Modal::end();
 ?>

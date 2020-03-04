@@ -84,7 +84,7 @@ class OrderController extends AppController {
                 );
             }
             // выполняем редирект, чтобы избежать повторной отправки формы
-            return $this->refresh();
+            //return $this->refresh();
         }
         return $this->render('checkout', ['order' => $order]);
     }

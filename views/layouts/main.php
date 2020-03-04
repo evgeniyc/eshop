@@ -93,11 +93,13 @@ AppAsset::register($this);
 					echo Nav::widget([
 						'options' => ['class' => 'navbar-nav navbar-right'],
 						'encodeLabels' => false,
+						'id' => 'main-menu',
 						'items' => [
 							['label' => FAS::i('home').' Главная', 'url' => ['/catalog/index']],
 							['label' => FAS::i('crosshairs').' О нас', 'url' => ['/site/about']],
 							['label' => FAS::i('id-badge').' Контакты', 'url' => ['/site/contact']],
-							['label' => FAS::i('shopping-cart').' Корзина <span class="badge badge-light">4</span>', 'url' => ['/basket/index']],
+							['label' => FAS::i('shopping-cart').' Корзина <span class="badge badge-light">'.
+							(isset(Yii::$app->session['basket']['counts']) ? Yii::$app->session['basket']['counts'] : '').'</span>', 'url' => ['/basket/index']],
 							
 							Yii::$app->user->isGuest ? (
 								['label' => FAS::i('sign-out-alt').' Войти', 'url' => ['/site/login']]

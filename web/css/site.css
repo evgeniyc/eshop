@@ -1,4 +1,6 @@
-html,
+html {
+	
+}
 body {
     background: #E9F0C0;
 }
@@ -108,17 +110,17 @@ a.desc:after {
 #search-form {
 	margin-top: 2px;
 }
-#w0 a {
+#main-menu a {
 	color: #DCD294;/*#E9F0C0;*/
 }
-#w0 a:hover, #w0 button:hover {
+#main-menu a:hover, #main-menu button:hover {
 	color: black;
 }
-#w0 button:hover {
+#main-menu button:hover {
 	color: black;
 	background: #eeeeee;
 }
-#w0 button {
+#main-menu button {
 	color: #DCD294;
 }
 #logo-block {
@@ -151,6 +153,11 @@ a.desc:after {
 	margin: 10px 0 10px 0;
 	border: 1px solid black;
 	height: 100%;
+}
+.img-half {
+	width: 50%;
+	float: left;
+	margin: 0 15px 5px 0;
 }
 .prod-info {
 	color: blue;
@@ -201,6 +208,12 @@ a.desc:after {
 	top: 55px;
 	color: blue;
 	text-shadow: -1px 1px 1px black;
+}
+#quant {
+	
+}
+#prod-submit {
+	
 }
 .thumbnail {
 	overflow: hidden;
