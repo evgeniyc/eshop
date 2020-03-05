@@ -98,7 +98,7 @@ AppAsset::register($this);
 							['label' => FAS::i('home').' Главная', 'url' => ['/catalog/index']],
 							['label' => FAS::i('crosshairs').' О нас', 'url' => ['/site/about']],
 							['label' => FAS::i('id-badge').' Контакты', 'url' => ['/site/contact']],
-							['label' => FAS::i('shopping-cart').' Корзина <span class="badge badge-light">'.
+							['label' => FAS::i('shopping-cart').' Корзина <span id="basket-badge" class="badge badge-light">'.
 							(isset(Yii::$app->session['basket']['counts']) ? Yii::$app->session['basket']['counts'] : '').'</span>', 'url' => ['/basket/index']],
 							
 							Yii::$app->user->isGuest ? (

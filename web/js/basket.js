@@ -1,13 +1,20 @@
+function basketadd (data) {
+        $( "#ajax-answer" ).load( "/eshop/web/basket/ajaxadd", { id: data, count: 1 }, function() {
+			$('#basket-message').modal('show');
+		});
+		ind = $( "#basket-badge" ).text();
+		ind++;
+		$( "#basket-badge" ).text(ind);
+}
 jQuery(document).ready(function($) {
     /*
      * Добавление товара в корзину с использованием AJAX
-     */
+     
     $('.add-to-basket').on('click', function (event) {
         $( "#ajax-answer" ).load( "/eshop/web/basket/ajaxadd", { id: 3, count: 1 }, function() {
 			$('#basket-message').modal('show');
 		});
-		//alert('Added');
-	});
+	});*/
     /*
      * Удаление товара из корзины в модальном окне
      */

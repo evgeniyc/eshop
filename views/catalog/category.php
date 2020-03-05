@@ -81,7 +81,7 @@ use yii\bootstrap\Modal;
                                         </button>
 										<!--</a>-->
                                     </form>
-									<button class="btn btn-warning add-to-basket">
+									<button class="btn btn-warning add-to-basket" onclick="basketadd(<?= $product['id']; ?>)">
                                             <i class="fa fa-shopping-cart"></i>
                                             Добавить в корзину
                                     </button>
