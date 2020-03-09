@@ -74,11 +74,11 @@ use yii\bootstrap\Modal;
                                             Yii::$app->request->csrfToken
                                         );
                                         ?>
-										<!--<a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#orderModal">-->
+										<!--<a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#orderModal">
                                         <button type="submit" class="btn btn-warning" data-toggle="modal">
                                             <i class="fa fa-shopping-cart"></i>
                                             Добавить в корзину
-                                        </button>
+                                        </button>-->
 										<!--</a>-->
                                     </form>
 									<button class="btn btn-warning add-to-basket" onclick="basketadd(<?= $product['id']; ?>)">

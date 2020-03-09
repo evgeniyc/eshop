@@ -118,8 +118,7 @@ class BasketController extends AppController {
 			$data = Yii::$app->request->post();
 			$basket = new Basket();
 			$basket->addToBasket($data['id'], $data['count']);
-			//$this->renderPartial('ajax',['data' => $data]);
-			return true;
+			return;
 			
 		} else
 			return false;

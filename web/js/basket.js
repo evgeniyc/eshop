@@ -1,10 +1,10 @@
 function basketadd (data) {
-        $( "#ajax-answer" ).load( "/eshop/web/basket/ajaxadd", { id: data, count: 1 }, function() {
-			$('#basket-message').modal('show');
-		});
-		ind = $( "#basket-badge" ).text();
-		ind++;
-		$( "#basket-badge" ).text(ind);
+	$( "#ajax-answer" ).load( "/eshop/web/basket/ajaxadd", { id: data, count: 1 }, function() {
+		$('#basket-message').modal('show');
+	});
+	ind = $( "#basket-badge" ).text();
+	ind++;
+	$( "#basket-badge" ).text(ind);
 }
 jQuery(document).ready(function($) {
     /*
